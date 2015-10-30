@@ -7,7 +7,7 @@ class connectors : private ABC {
   private:
     bool check;
   public:
-    virtual bool compare();
+    virtual bool execute();
 };
 
 #endif

@@ -7,6 +7,6 @@ std::queue<ABC> parse (std::string line) {
   for (int c = 0; c < line.size(); c++) {
     if (line.at(c) == '#')
       c = line.size();
-
+    else if (line.at(c) == ';' || line.at(c) == ''
   }
 }
