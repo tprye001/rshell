@@ -1,3 +1,6 @@
+#ifndef PARSE_H
+#define PARSE_H
+
 #include <string>
 #include <queue>
 #include <cstring>
@@ -15,3 +18,5 @@ std::queue<ABC> parse (std::string line) {
 
   }
 }
+
+#endif

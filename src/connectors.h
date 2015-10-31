@@ -2,11 +2,13 @@
 #define CONNECTORS_H
 
 #include "ABC.h"
+#include <string>
 
-class connectors : private ABC {
+class Connector : private ABC {
   private:
-    bool check;
+    std::string type;
   public:
+    Connector (std::string t) : type(t) { }
     virtual bool execute();
 };
 

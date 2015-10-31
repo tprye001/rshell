@@ -5,11 +5,13 @@
 #include <vector>
 #include <string>
 
-class commands : private ABC {
+class Commands : private ABC {
   private:
+    std::string type;
     std::vector<std::string> arg;
   public:
-    virtual bool execute();
+    Commands (std::string t, std::vector<std::string> a) : type(t), arg(a) { }
+    bool execute();
 };
 
 #endif
