@@ -8,11 +8,13 @@ int main()
 {
   while(1)
   {
-    string commands;
+    string line;
     cout << "$ ";  
-    getline(cin, commands);
+    getline(cin, line);
  
-    queue<ABC> toBeExecuted = parse(commands);
+    queue<string> toBeExecuted = parse(line);
+    
+    
   }
   return 0;
 }
