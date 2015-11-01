@@ -20,8 +20,6 @@ bool connectorsCheck(string s)
 }
 
 bool executeAll(queue<string> q){
-  //Vector of connectors
-  vector<string> connectors = {";", "&&", "||"}
 
   //executes all arguments in queue
   for(int i = 0; i < q.size(); i++){
