@@ -9,7 +9,7 @@ class Connector : private ABC {
     std::string type;
   public:
     Connector (std::string t) : type(t) { }
-    virtual bool execute();
+    bool execute();
 };
 
 #endif
