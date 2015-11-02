@@ -11,14 +11,15 @@ std::queue<std::string> parse (std::string line) {
   for (int c = 0; c < line.size(); c++) {
     if (line.at(c) == '#') {
       c = line.size();
-      str.erase(c, line.size() - c);
+      line.erase(c, line.size() - c);
     }
   }
 
-  char * sbstrng = strtok(line, " ");
+  const char * lineData = line.data();
+  char * sbstrng = std::strtok(lineData, " ");
   while(sbstrng != NULL) {
     ret.push(substrng);
-    sbstrng = strtok(NULL, " ");
+    sbstrng = std::strtok(NULL, " ");
   }
 }
 

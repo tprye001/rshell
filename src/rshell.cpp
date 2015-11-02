@@ -2,6 +2,7 @@
 #include "parse.h"
 #include <queue>
 #include <string>
+#include "execute.h"
 
 using namespace std;
 
@@ -9,7 +10,10 @@ using namespace std;
 bool connectorsCheck(string s)
 {
   //vector of connectors
-  vector<string> connectors = {";", "&&", "||"};
+  vector<string> connectors;
+  connectors.push_back(";");
+  connectors.push_back("&&");
+  connectors.push_back("||");
 
   for(int c = 0; c < connectors.size(); c++)
   {
