@@ -17,7 +17,7 @@ bool connectorsCheck(string s)
 
   for(int c = 0; c < connectors.size(); c++)
   {
-    if(connectors.at(c) = s)
+    if(connectors.at(c) == s)
       return true;
   }
   return false;
