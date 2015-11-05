@@ -1,4 +1,5 @@
 Things we have to do:
+-fix connector issue (line 29 of rshell.cpp)
 -Add fork/wait to all files
 -Makefile
 -tests
