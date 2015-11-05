@@ -33,7 +33,6 @@ bool executeAll(queue<string> q){
    
     while(!connectorsCheck(q.front())){
       args.push_back(q.front());
-      q.pop();
     }
 
     //Connector OR- special case
