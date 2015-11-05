@@ -35,28 +35,29 @@ bool executeAll(queue<string> q){
       q.pop();
     }
 
-    //Connector OR- special case
-    if(q.front() == "||"){
-      if(execute(cmd, args) == true){
-        while(!connectorsCheck(q.front())){
-          q.pop();
-        }
-        q.pop();
-      }
-    }
-
-    //Connecor AND- special case
-    else if(q.front() == "&&"){
-      if(execute(cmd, args) == false){
-        while(!connectorsCheck(q.front())){
+    if(!q.empty()){
+     //Connector OR- special case
+      if(q.front() == "||"){
+        if(execute(cmd, args) == true){
+          while(!connectorsCheck(q.front())){
             q.pop();
-        }
-        q.pop();
-      }
-    }
+         }
+         q.pop();
+       }
+     }
 
-    //Everyother case
-    else{
+     //Connecor AND- special case
+     else if(q.front() == "&&"){
+        if(execute(cmd, args) == false){
+         while(!connectorsCheck(q.front())){
+              q.pop();
+         }
+         q.pop();
+        }
+     }
+  }
+     //Everyother case
+     else{
       execute(cmd, args);
     }
     args.clear();
