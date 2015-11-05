@@ -3,6 +3,8 @@
 #include <unistd.h>
 #include <string>
 #include <vector>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 /*Parameters: command to be executed and  vector<string> of arguments 
  * Return Value: bool (if execute was successful) */
@@ -29,9 +31,28 @@ bool execute(std::string cmd, std::vector<std::string> args){
   sArgs.push_back(NULL);
 
   cmd = "./" + cmd;
+  
+  pid_t c_pid, pid;
+  int status;
 
-  execvp(cmd.data(), &sArgs[0]);
-  perror("execvp fail");
+  c_pid = fork();
 
+  if (c_pid < 0) {
+    perror("fork failed");
+    exit(1);
+  }
+
+  else if (c_pid ==0) {
+    execvp(cmd.data(), &sArgs[0]);
+    perror("execvp fail");
+  }
+
+  else if (c_pid > 0) {
+    if( (pid = wait(&status)) < 0) {
+      perror("wait");
+      exit(1);
+    }
+  }
+    
   return true;
 }

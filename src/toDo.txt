@@ -1,0 +1,8 @@
+Things we have to do:
+-Add fork/wait to all files
+-Makefile
+-tests
+-Readme
+-Werror
+-kick ass
+-take names
