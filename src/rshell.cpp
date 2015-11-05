@@ -30,7 +30,7 @@ bool executeAll(queue<string> q){
     string cmd = q.front();
     vector<string> args;
    
-    while(!connectorsCheck(q.front())){
+    while(!connectorsCheck(q.front()) && !q.empty()){
       args.push_back(q.front());
       q.pop();
     }
