@@ -15,13 +15,16 @@ std::queue<std::string> parse (std::string line) {
     }
   }
 
-  char lineData = *line.data();
-  char * linePointer = &lineData;
+  char * linePointer = new char[line.size() + 1];
+  std::copy(line.begin(), line.end(), linePointer);
+  linePointer[line.size()] = '\0';
+
   char * sbstrng = std::strtok(linePointer, " ");
   while(sbstrng != NULL) {
     ret.push(sbstrng);
     sbstrng = std::strtok(NULL, " ");
   }
+  delete[] linePointer;
   return ret;
 }
 

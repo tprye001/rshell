@@ -13,9 +13,10 @@ bool execute(std::string cmd, std::vector<std::string> args){
   // unsigned n = args.size();
   char* sArgs[args.size()]; //should be n not 20 but WERROR
   for(unsigned int i = 0; i < args.size(); i++){
-    char sArgsData = *args.at(i).data();
+    /*char sArgsData = *args.at(i).data();
     char* sArgsPointer = &sArgsData;
-    sArgs[i] = sArgsPointer;
+    sArgs[i] = sArgsPointer;*/
+    
   }
 
   cmd = "./" + cmd;
