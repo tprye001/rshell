@@ -58,9 +58,8 @@ bool executeAll(queue<string> q){
 
     //Everyother case
     else{
-     // bool s = execute(cmd, args);
+      execute(cmd, args);
     }
-
     args.clear();
   }
   return true;
