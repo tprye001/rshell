@@ -10,7 +10,8 @@
 bool execute(std::string cmd, std::vector<std::string> args){
 
   //turn args into one big string
-  char* sArgs[args.size()];
+ // unsigned n = args.size();
+  char* sArgs[20]; //should be n not 20 but WERROR
   for(unsigned int i = 0; i < args.size(); i++){
     char sArgsData = *args.at(i).data();
     char* sArgsPointer = &sArgsData;

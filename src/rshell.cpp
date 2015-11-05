@@ -15,7 +15,7 @@ bool connectorsCheck(string s)
   connectors.push_back("&&");
   connectors.push_back("||");
 
-  for(int c = 0; c < connectors.size(); c++)
+  for(unsigned c = 0; c < connectors.size(); c++)
   {
     if(connectors.at(c) == s)
       return true;
@@ -26,7 +26,7 @@ bool connectorsCheck(string s)
 bool executeAll(queue<string> q){
 
   //executes all arguments in queue
-  for(int i = 0; i < q.size(); i++){
+  for(unsigned i = 0; i < q.size(); i++){
     string cmd = q.front();
     q.pop();
     vector<string> args;
@@ -58,7 +58,7 @@ bool executeAll(queue<string> q){
 
     //Everyother case
     else{
-      bool s = execute(cmd, args);
+     // bool s = execute(cmd, args);
     }
 
     args.clear();
@@ -68,15 +68,15 @@ bool executeAll(queue<string> q){
 
 int main()
 {
-  while(1)
-  {
+  while(1) {
     string line;
     cout << "$ ";  
     getline(cin, line);
  
     queue<string> toBeExecuted = parse(line);
-    
-    
+    executeAll(toBeExecuted);
+
   }
+
   return 0;
 }

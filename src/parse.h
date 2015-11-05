@@ -8,7 +8,7 @@
 std::queue<std::string> parse (std::string line) {
   std::queue<std::string> ret;
 
-  for (int c = 0; c < line.size(); c++) {
+  for (unsigned c = 0; c < line.size(); c++) {
     if (line.at(c) == '#') {
       c = line.size();
       line.erase(c, line.size() - c);
@@ -22,6 +22,7 @@ std::queue<std::string> parse (std::string line) {
     ret.push(sbstrng);
     sbstrng = std::strtok(NULL, " ");
   }
+  return ret;
 }
 
 #endif
