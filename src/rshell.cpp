@@ -28,7 +28,6 @@ bool executeAll(queue<string> q){
   //executes all arguments in queue
   for(unsigned i = 0; i < q.size(); i++){
     string cmd = q.front();
-    q.pop();
     vector<string> args;
    
     while(!connectorsCheck(q.front())){
