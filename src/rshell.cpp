@@ -55,7 +55,7 @@ bool executeAll(queue<string> q){
          q.pop();
         }
      }
-  }
+    }
      //Everyother case
      else{
       execute(cmd, args);
