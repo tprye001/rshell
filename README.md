@@ -1,7 +1,7 @@
 Jonathan Alcaraz
 
 Tricia Pryer
-# rshell | CS100 Assignment 1
+# CS100 Assignment 1 | rshell
 
 
 
@@ -21,5 +21,5 @@ and the following connectors:
 - rshell doesn't quite work yet.
 
 ### Authors
-Tricia Pryer _tprye001@ucr.edu_
+Tricia Pryer _tprye001@ucr.edu_ \\
 Jonathan Alcaraz _jalca011@ucr.edu_

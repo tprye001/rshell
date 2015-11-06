@@ -1,9 +1,8 @@
 #!/bin/sh
 
 cd ..
-cd ./bin
 
-(echo "ls" && echo "exit") | ./rshell
-echo "echo \"Hi\"" | ./rshell
-echo "mkdir laaaame" | ./rshell
-echo "ls" | ./rshell
+(echo "ls" && echo "exit") | ./bin/rshell
+(echo "echo \"Hi\"" && echo "exit") | ./bin/rshell
+(echo "mkdir laaaame" && echo "exit") | ./bin/rshell
+(echo "ls" && echo "exit") | ./bin/rshell
