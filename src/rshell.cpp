@@ -25,9 +25,8 @@ bool connectorsCheck(string s)
 
 bool executeAll(queue<string> q){
   //executes all arguments in queue
-  for(unsigned i = 0; i < q.size(); i++){
+  while(!q.empty()){
     string cmd = q.front();
-    //q.pop();
     vector<string> args;
    
     while(!q.empty() && !connectorsCheck(q.front())){
@@ -37,23 +36,29 @@ bool executeAll(queue<string> q){
      //Connector OR- special case
       if(!q.empty() && q.front() == "||"){
         if(execute(cmd, args) == true){
-          while(!connectorsCheck(q.front())){
+          while(!q.empty() && !connectorsCheck(q.front())){
             q.pop();
          }
          q.pop();
        }
+       q.pop();
      }
      //Connecor AND- special case
      else if(!q.empty() && q.front() == "&&"){
         if(execute(cmd, args) == false){
-         while(!connectorsCheck(q.front())){
+         while(!q.empty() && !connectorsCheck(q.front())){
               q.pop();
          }
-         q.pop();
+         q.pop(); //pops connector
         }
+        q.pop(); //pops connector
      }
+     //Every other case
      else{
       execute(cmd, args);
+      if(!q.empty()){
+        q.pop();
+      }
     }
     args.clear();
     //cout << "Front of q: " << q.front();
