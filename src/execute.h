@@ -30,7 +30,7 @@ bool execute(std::string cmd, std::vector<std::string> args){
 
   sArgs.push_back(NULL);
 
-  cmd = "./" + cmd;
+  cmd = "./bin/" + cmd;
   
   pid_t c_pid, pid;
   int status;

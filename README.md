@@ -1,5 +1,7 @@
-# rshell
-## CS100 Assignment 1
+Jonathan Alcaraz
+
+Tricia Pryer
+# rshell | CS100 Assignment 1
 
 
 
