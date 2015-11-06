@@ -3,6 +3,3 @@ Things we have to do:
 -Makefile
 -tests
 -Readme
--Werror
--kick ass
--take names
