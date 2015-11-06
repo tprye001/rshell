@@ -28,58 +28,56 @@ bool executeAll(queue<string> q){
   while(!q.empty()){
     string cmd = q.front();
     vector<string> args;
-   
+
     while(!q.empty() && !connectorsCheck(q.front())){
       args.push_back(q.front());
       q.pop();
     }
-     //Connector OR- special case
-      if(!q.empty() && q.front() == "||"){
-        if(execute(cmd, args) == true){
-          while(!q.empty() && !connectorsCheck(q.front())){
-            q.pop();
-         }
-         q.pop();
-       }
-       q.pop();
-     }
-     //Connecor AND- special case
-     else if(!q.empty() && q.front() == "&&"){
-        if(execute(cmd, args) == false){
-         while(!q.empty() && !connectorsCheck(q.front())){
-              q.pop();
-         }
-         q.pop(); //pops connector
+    //Connector OR- special case
+    if(!q.empty() && q.front() == "||"){
+      if(execute(cmd, args) == true){
+        while(!q.empty() && !connectorsCheck(q.front())){
+          q.pop();
+        }
+        q.pop();
+      }
+      q.pop();
+    }
+    //Connecor AND- special case
+    else if(!q.empty() && q.front() == "&&"){
+      if(execute(cmd, args) == false){
+        while(!q.empty() && !connectorsCheck(q.front())){
+          q.pop();
         }
         q.pop(); //pops connector
-     }
-     //Every other case
-     else{
+      }
+      q.pop(); //pops connector
+    }
+    //Every other case
+    else{
       execute(cmd, args);
       if(!q.empty()){
         q.pop();
       }
     }
     args.clear();
-    //cout << "Front of q: " << q.front();
-    //q.pop(); //pop off connector
 
   }
   return true;
 }
 
-int main()
-{
-  while(1) {
-    string line;
-    cout << "$ ";  
-    getline(cin, line);
- 
+int main() {
+  string line = "";
+  cout << "$ ";  
+  getline(cin, line);
+  while(line != "exit") {
     queue<string> toBeExecuted = parse(line);
     executeAll(toBeExecuted);
+
+    cout << "$ ";  
+    getline(cin, line);
 
   }
 
   return 0;
 }
-//this is the end of the program
