@@ -43,7 +43,7 @@ Our commands on the other hand are easily extensible. Rshell simply calls an exe
 
 ### Known Bugs
 - rshell interpets `"` as part of string
-- rshell freaks out when you end a command with a conenctor
+- rshell freaks out when you end a command with a connector
 
 ### Notes
 - When `mkdir` gets called on a directory that already exists, mkdir throws a warning, but execvp still registers as succeful. We consider this as `mkdir` executing properly, but bash handles it differently.
