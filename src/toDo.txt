@@ -1,4 +1,0 @@
-Things we have to do:
--fix connector issue (line 29 of rshell.cpp)
--tests
--Readme

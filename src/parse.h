@@ -10,8 +10,7 @@ std::queue<std::string> parse (std::string line) {
 
   for (unsigned c = 0; c < line.size(); c++) {
     if (line.at(c) == '#') {
-      c = line.size();
-      line.erase(c, line.size() - c);
+      line.erase(c, line.size() - 1);
     }
   }
 

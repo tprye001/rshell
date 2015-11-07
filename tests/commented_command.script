@@ -1,0 +1,13 @@
+Script started on Fri 06 Nov 2015 06:30:32 PM PST
+[jalca011@hammer tests]$ cd ..
+[jalca011@hammer rshell]$ ./bin/rshell
+$ echo "catsrare " #cool
+"cats are "
+$ mkdir dogs#cats
+$ ls # -l
+bin  dogs  LICENSE  Makefile  README.md	 src  tests
+$ ^C
+[jalca011@hammer rshell]$ exit
+exit
+
+Script done on Fri 06 Nov 2015 06:33:32 PM PST
