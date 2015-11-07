@@ -36,22 +36,26 @@ bool executeAll(queue<string> q){
     //Connector OR- special case
     if(!q.empty() && q.front() == "||"){
       if(execute(cmd, args) == true){
+        q.pop();
         while(!q.empty() && !connectorsCheck(q.front())){
           q.pop();
         }
+      }
+      else{
         q.pop();
       }
-      q.pop();
     }
     //Connecor AND- special case
     else if(!q.empty() && q.front() == "&&"){
       if(execute(cmd, args) == false){
+        q.pop();
         while(!q.empty() && !connectorsCheck(q.front())){
           q.pop();
         }
+      }
+      else{
         q.pop(); //pops connector
       }
-      q.pop(); //pops connector
     }
     //Every other case
     else{
@@ -61,7 +65,6 @@ bool executeAll(queue<string> q){
       }
     }
     args.clear();
-
   }
   return true;
 }

@@ -7,7 +7,7 @@ all: rshell dir
 	g++ $(FLAGS) src/mkdir.cpp -o bin/mkdir
 
 rshell: dir
-	g++ $(FLAGS) src/rshell.cpp -o bin/rshell
+	g++ -g $(FLAGS) src/rshell.cpp -o bin/rshell
  
 dir:
 	mkdir bin

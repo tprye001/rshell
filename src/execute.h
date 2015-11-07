@@ -26,26 +26,25 @@ bool execute(std::string cmd, std::vector<std::string> args){
   pid_t c_pid, pid;
   int status;
 
+  int x = 0;
+
   c_pid = fork();
 
   if (c_pid < 0) {
     perror("fork failed");
     exit(1);
-    return false;
   }
 
   else if (c_pid ==0) {
-    execvp(cmd.data(), &sArgs[0]);
+    x = execvp(cmd.data(), &sArgs[0]);
     perror("execvp fail");
-    return false;
   }
 
   else if (c_pid > 0) {
     if( (pid = wait(&status)) < 0) {
       perror("wait");
       exit(1);
-      return true;
     }
   }
-  return false;
+  return (x != -1); 
 }
