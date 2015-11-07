@@ -1,0 +1,39 @@
+Script started on Fri 06 Nov 2015 09:11:19 PM PST
+[tprye001@hammer tests]$ cdk..
+[tprye001@hammer rshell]$ make
+mkdir bin
+#g++ -Wall -Werror -ansi -pedantic -c src/execute.h
+#g++ -Wall -Werror -ansi -pedantic -c src/parse.h
+#\rm *.o
+g++ -g -Wall -Werror -ansi -pedantic src/rshell.cpp -o bin/rshell
+g++ -Wall -Werror -ansi -pedantic src/echo.cpp -o bin/echo
+g++ -Wall -Werror -ansi -pedantic src/ls.cpp -o bin/ls
+g++ -Wall -Werror -ansi -pedantic src/mkdir.cpp -o bin/mkdir
+[tprye001@hammer rshell]$ ./bin/rshell
+$ echo "Hello World" || ls
+"Hello World"
+$ mkdir dogs && ls
+bin  dogs  LICENSE  Makefile  README.md	 src  tests
+$ cd || echo "We didn't do cd... yet?!"
+execvp fail: No such file or directory
+"We didn't do cd... yet?!"
+$ mkdir dogs || echo "should not output"
+mkdir: cannot create directory `dogs': File exists
+$ mkdir cats ; ls -l ; echo "yay!"
+total 64
+drwxr-xr-x 2 tprye001 classes  4096 Nov	 6 21:11 bin
+drwxr-xr-x 2 tprye001 classes  4096 Nov	 6 21:13 cats
+drwxr-xr-x 2 tprye001 classes  4096 Nov	 6 21:12 dogs
+-rw-r--r-- 1 tprye001 classes 35147 Oct 28 23:27 LICENSE
+-rw-r--r-- 1 tprye001 classes	377 Nov	 6 19:30 Makefile
+-rw-r--r-- 1 tprye001 classes  1681 Nov	 6 20:17 README.md
+drwxr-xr-x 2 tprye001 classes  4096 Nov	 6 20:49 src
+drwxr-xr-x 2 tprye001 classes  4096 Nov	 6 21:11 tests
+"yay!"
+$ echo goodbye"" "goodbye" && exit ;
+goodbye"" "goodbye"
+$ exit
+[tprye001@hammer rshell]$ exit
+exit
+
+Script done on Fri 06 Nov 2015 09:14:58 PM PST
