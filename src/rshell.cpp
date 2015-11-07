@@ -29,6 +29,8 @@ bool executeAll(queue<string> q){
     string cmd = q.front();
     vector<string> args;
 
+    if (cmd == "exit") return false;
+
     while(!q.empty() && !connectorsCheck(q.front())){
       args.push_back(q.front());
       q.pop();
@@ -73,13 +75,13 @@ int main() {
   string line = "";
   cout << "$ ";  
   getline(cin, line);
-  while(line != "exit") {
-    queue<string> toBeExecuted = parse(line);
-    executeAll(toBeExecuted);
+  queue<string> toBeExecuted = parse(line);
 
+  while(executeAll(toBeExecuted)) {
     cout << "$ ";  
     getline(cin, line);
 
+    toBeExecuted = parse(line);
   }
 
   return 0;
