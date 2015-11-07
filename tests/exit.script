@@ -1,0 +1,22 @@
+Script started on Fri 06 Nov 2015 08:56:01 PM PST
+[jalca011@hammer tests]$ cd ..
+[jalca011@hammer rshell]$ ./bin/rshell
+$ ls || exit
+bin  LICENSE  Makefile	README.md  src	tests
+$ ls ; exit
+bin  LICENSE  Makefile	README.md  src	tests
+[jalca011@hammer rshell]$ ./bin/rshell
+$ ls
+bin  LICENSE  Makefile	README.md  src	tests
+$ echo "Hello World"
+"Hello World"
+$ mkdir dogs
+$ ls || exit
+bin  dogs  LICENSE  Makefile  README.md	 src  tests
+$ mkdir dogs || ls
+mkdir: cannot create directory `dogs': File exists
+$ exit
+[jalca011@hammer rshell]$ exit
+exit
+
+Script done on Fri 06 Nov 2015 08:57:10 PM PST

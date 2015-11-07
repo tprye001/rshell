@@ -7,16 +7,14 @@
 using namespace std;
 
 /*returns true if s is a connector, false otherwise*/
-bool connectorsCheck(string s)
-{
+bool connectorsCheck(string s) {
   //vector of connectors
   vector<string> connectors;
   connectors.push_back(";");
   connectors.push_back("&&");
   connectors.push_back("||");
 
-  for(unsigned c = 0; c < connectors.size(); c++)
-  {
+  for(unsigned c = 0; c < connectors.size(); c++) {
     if(connectors.at(c) == s)
       return true;
   }
