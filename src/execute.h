@@ -8,6 +8,7 @@
 #include <vector>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include "test.h"
 
 /*Parameters: command to be executed and  vector<string> of arguments 
  * Return Value: bool (if execute was successful) */
