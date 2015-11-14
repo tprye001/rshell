@@ -4,6 +4,8 @@
 #include <string>
 #include <queue>
 #include <cstring>
+#include <iostream>
+#include "isConnector.h"
 
 std::queue<std::string> parse (std::string line) {
   std::queue<std::string> ret;
@@ -18,9 +20,22 @@ std::queue<std::string> parse (std::string line) {
   std::copy(line.begin(), line.end(), linePointer);
   linePointer[line.size()] = '\0';
 
+  bool bracStart = false;
   char * sbstrng = std::strtok(linePointer, " ");
   while(sbstrng != NULL) {
-    ret.push(sbstrng);
+    if (sbstrng == "[") {
+      ret.push("test");
+      bracStart = true;
+    }
+    else if (bracStart && isConnector(sbstrng) {
+      //error stuff
+      std::cout << "missing ']'" << std::endl;
+      exit(1);
+    }
+    else if (bracStart && sbstrng == "]")
+      bracStart = false;
+    else
+      ret.push(sbstrng);
     sbstrng = std::strtok(NULL, " ");
   }
   delete[] linePointer;
