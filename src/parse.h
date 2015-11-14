@@ -5,6 +5,7 @@
 #include <queue>
 #include <cstring>
 #include <iostream>
+#include <stdlib.h>
 #include "isConnector.h"
 
 std::queue<std::string> parse (std::string line) {
@@ -23,16 +24,16 @@ std::queue<std::string> parse (std::string line) {
   bool bracStart = false;
   char * sbstrng = std::strtok(linePointer, " ");
   while(sbstrng != NULL) {
-    if (sbstrng == "[") {
+    if (*sbstrng == '[') {
       ret.push("test");
       bracStart = true;
     }
-    else if (bracStart && isConnector(sbstrng) {
+    else if (bracStart && isConnector(sbstrng)) {
       //error stuff
       std::cout << "missing ']'" << std::endl;
       exit(1);
     }
-    else if (bracStart && sbstrng == "]")
+    else if (bracStart && *sbstrng == ']')
       bracStart = false;
     else
       ret.push(sbstrng);

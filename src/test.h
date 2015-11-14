@@ -4,19 +4,24 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <vector>
 
-bool test(vector<char *> args){
-  char* flag = "-e"
+bool test(std::vector<char *> args){
+  std::string flag1 = "-f";
+  std::string flag2 = "-e";
+  std::string flag3 = "-d";
+
+  char* flag = &flag2[0];
   char* path;
-  if(args.at(0) == "-f") {
-    flag = "-f";
+  if(*(args.at(0)) == flag1[0]) {
+    flag = &flag1[0];
     path = args.at(1);
   }
-  else if(args.at(0) == "-d"){
-    flag = "-d";
+  else if(*(args.at(0)) == flag3[0]){
+    flag = &flag3[0];
     path = args.at(1);
   }
-  else if(args.at(0) == "-e"){
+  else if(*(args.at(0)) == flag2[0]){
     path = args.at(1);
   }
   else
@@ -25,10 +30,10 @@ bool test(vector<char *> args){
   struct stat kevin;
   stat(path, &kevin);
 
-  if(flag == "-f"){
+  if(*flag == flag1[0]){
     return S_ISREG(kevin.st_mode);
   }
-  else if(flag == "-d"){
+  else if(*flag == flag3[0]){
     return S_ISDIR(kevin.st_mode);
   }
   return (S_ISREG(kevin.st_mode) || S_ISDIR(kevin.st_mode));
