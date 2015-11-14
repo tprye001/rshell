@@ -3,23 +3,9 @@
 #include <queue>
 #include <string>
 #include "execute.h"
+#include "isConnector.h"
 
 using namespace std;
-
-/*returns true if s is a connector, false otherwise*/
-bool connectorsCheck(string s) {
-  //vector of connectors
-  vector<string> connectors;
-  connectors.push_back(";");
-  connectors.push_back("&&");
-  connectors.push_back("||");
-
-  for(unsigned c = 0; c < connectors.size(); c++) {
-    if(connectors.at(c) == s)
-      return true;
-  }
-  return false;
-}
 
 bool executeAll(queue<string> q){
   //executes all arguments in queue
@@ -29,7 +15,7 @@ bool executeAll(queue<string> q){
 
     if (cmd == "exit") return false;
 
-    while(!q.empty() && !connectorsCheck(q.front())){
+    while(!q.empty() && !isConnector(q.front())){
       args.push_back(q.front());
       q.pop();
     }
@@ -37,7 +23,7 @@ bool executeAll(queue<string> q){
     if(!q.empty() && q.front() == "||"){
       if(execute(cmd, args) == true){
         q.pop();
-        while(!q.empty() && !connectorsCheck(q.front())){
+        while(!q.empty() && !isConnector(q.front())){
           q.pop();
         }
       }
@@ -49,7 +35,7 @@ bool executeAll(queue<string> q){
     else if(!q.empty() && q.front() == "&&"){
       if(execute(cmd, args) == false){
         q.pop();
-        while(!q.empty() && !connectorsCheck(q.front())){
+        while(!q.empty() && !isConnector(q.front())){
           q.pop();
         }
       }
