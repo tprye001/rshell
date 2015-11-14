@@ -1,3 +1,6 @@
+#ifndef EXECUTE_H
+#define EXECUTE_H
+
 #include <cstdio>
 #include <cstdlib>
 #include <unistd.h>
@@ -10,8 +13,8 @@
  * Return Value: bool (if execute was successful) */
 
 bool execute(std::string cmd, std::vector<std::string> args){
-
-  //turn args into one big string
+  
+    //turn args into one big string
   std::vector<char *> sArgs;
 
   for (std::vector<std::string>::iterator loop = args.begin(); 
@@ -20,6 +23,11 @@ bool execute(std::string cmd, std::vector<std::string> args){
   }
 
   sArgs.push_back(NULL);
+
+  if (cmd == "test")
+    return test(sArgs);
+
+
 
   cmd = "./bin/" + cmd;
   
@@ -48,3 +56,5 @@ bool execute(std::string cmd, std::vector<std::string> args){
   }
   return (x != -1); 
 }
+
+#endif
