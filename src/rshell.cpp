@@ -7,9 +7,64 @@
 
 using namespace std;
 
+void help(queue<string>& q){
+  if(q.front().size() > 1){
+    q.front().erase(0,1);
+  }
+  else
+    q.pop();
+
+  queue<string> new_q;
+  int counter = 0;
+
+  while(!q.empty()){
+    if(q.front().at(q.front().size()-1) == ')'){
+      if(counter == 0){
+        if(q.front().size() > 1){
+          q.front().erase(q.front().size()-1, 1);
+          new_q.push(q.front());
+        }
+        
+        int x = executeAll(new_q);
+
+        if(x == 0){
+          q.front().erase(0, q.front().size()-1);
+          q.front().append("exit");
+        }
+        else if(x == 1){
+          q.front().erase(0,q.front().size()-1);
+          q.front().append("true");
+        }
+        else if(x == 2){
+          q.front().erase(0,q.front().size()-1);
+          q.front().append("false");
+        }
+        return;
+      }
+      else if(counter != 0){
+        counter--;
+      }  
+    }
+
+    else if(q.front().at(0) == '('){
+      counter++;
+    }
+
+    else{
+      new_q.push(q.front());
+      q.pop();
+    }
+  }
+  return;
+}
+
 int executeAll(queue<string> q){
   //executes all arguments in queue
   while(!q.empty()){
+    if(!q.empty() && q.front().at(0) == '('){
+      help(&queue<string> q);
+
+    }
     string cmd = q.front();
     vector<string> args;
 
@@ -19,6 +74,7 @@ int executeAll(queue<string> q){
       args.push_back(q.front());
       q.pop();
     }
+
     //Connector OR- special case
     if(!q.empty() && q.front() == "||"){
       if(execute(cmd, args) == true){
