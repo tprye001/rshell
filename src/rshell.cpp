@@ -7,6 +7,8 @@
 
 using namespace std;
 
+int executeAll(queue<string>);
+
 void help(queue<string>& q){
   if(q.front().size() > 1){
     q.front().erase(0,1);
@@ -28,15 +30,15 @@ void help(queue<string>& q){
         int x = executeAll(new_q);
 
         if(x == 0){
-          q.front().erase(0, q.front().size()-1);
+          q.front().erase(0, q.front().size());
           q.front().append("exit");
         }
-        else if(x == 1){
-          q.front().erase(0,q.front().size()-1);
+        else if(x == 2){
+          q.front().erase(0,q.front().size());
           q.front().append("true");
         }
-        else if(x == 2){
-          q.front().erase(0,q.front().size()-1);
+        else if(x == 1){
+          q.front().erase(0,q.front().size());
           q.front().append("false");
         }
         return;
@@ -60,9 +62,10 @@ void help(queue<string>& q){
 
 int executeAll(queue<string> q){
   //executes all arguments in queue
+  int ret = 1;
   while(!q.empty()){
     if(!q.empty() && q.front().at(0) == '('){
-      help(&queue<string> q);
+      help(q);
 
     }
     string cmd = q.front();
@@ -84,12 +87,14 @@ int executeAll(queue<string> q){
         }
       }
       else{
+        ret = 2;
         q.pop();
       }
     }
     //Connecor AND- special case
     else if(!q.empty() && q.front() == "&&"){
       if(execute(cmd, args) == false){
+        ret = 2;
         q.pop();
         while(!q.empty() && !isConnector(q.front())){
           q.pop();
@@ -101,14 +106,14 @@ int executeAll(queue<string> q){
     }
     //Every other case
     else{
-      execute(cmd, args);
+      ret = execute(cmd, args) + 1;
       if(!q.empty()){
         q.pop();
       }
     }
     args.clear();
   }
-  return true;
+  return ret;
 }
 
 int main() {
