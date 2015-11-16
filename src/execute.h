@@ -28,7 +28,11 @@ bool execute(std::string cmd, std::vector<std::string> args){
   if (cmd == "test")
     return test(sArgs);
 
+  if (cmd == "true")
+    return true;
 
+  if (cmd == "false")
+    return false;
 
   cmd = "./bin/" + cmd;
   
