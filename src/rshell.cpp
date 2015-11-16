@@ -7,13 +7,13 @@
 
 using namespace std;
 
-bool executeAll(queue<string> q){
+int executeAll(queue<string> q){
   //executes all arguments in queue
   while(!q.empty()){
     string cmd = q.front();
     vector<string> args;
 
-    if (cmd == "exit") return false;
+    if (cmd == "exit") return 0;
 
     while(!q.empty() && !isConnector(q.front())){
       args.push_back(q.front());
@@ -61,7 +61,7 @@ int main() {
   getline(cin, line);
   queue<string> toBeExecuted = parse(line);
 
-  while(executeAll(toBeExecuted)) {
+  while(executeAll(toBeExecuted) != 0) {
     cout << "$ ";  
     getline(cin, line);
 
