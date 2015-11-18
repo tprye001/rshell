@@ -49,6 +49,8 @@ void help(queue<string>& q){
     }
 
     else if(q.front().at(0) == '('){
+      new_q.push(q.front());
+      q.pop();
       counter++;
     }
 
