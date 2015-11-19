@@ -45,7 +45,7 @@ void help(queue<string>& q){
       }
       else if(counter != 0){
         counter--;
-        q.front().erase(q.front().size()-1, 1);
+        //q.front().erase(q.front().size()-1, 1);
         new_q.push(q.front());
       }  
     }
@@ -66,7 +66,7 @@ void help(queue<string>& q){
 
 int executeAll(queue<string> q){
   //executes all arguments in queue
-  int ret = 1;
+  int ret = 2;
   while(!q.empty()){
     if(!q.empty() && q.front().at(0) == '('){
       help(q);
@@ -86,28 +86,74 @@ int executeAll(queue<string> q){
     if(!q.empty() && q.front() == "||"){
       if(execute(cmd, args) == true){
         q.pop();
-        while(!q.empty() && !isConnector(q.front())){
-          q.pop();
+        if(q.front().at(0) == '('){
+          int cnt = 1;
+          if(q.front().size() > 1){
+            q.front().erase(0,1);
+          }
+          else
+            q.pop();
+          while(cnt > 0){
+            if(q.front().at(0) == '('){
+              cnt++;
+            }
+            else if(q.front().at(q.front().size()-1) == ')'){
+              cnt--;
+            }
+            if(cnt != 0){
+              q.pop();
+            }
+          } 
+          q.front().erase(0,q.front().size());
+          q.front().append("true");
+        }
+        else{
+          while(!q.empty() && !isConnector(q.front())){
+            q.pop();
+          }
         }
       }
       else{
-        ret = 2;
+        ret = 1;
         q.pop();
       }
     }
     //Connecor AND- special case
     else if(!q.empty() && q.front() == "&&"){
       if(execute(cmd, args) == false){
-        ret = 2;
+        ret = 1;
         q.pop();
-        while(!q.empty() && !isConnector(q.front())){
-          q.pop();
+        if(q.front().at(0) == '('){
+          int cnt = 1;
+          if(q.front().size() > 1){
+            q.front().erase(0,1);
+          }
+          else 
+            q.pop();
+          while(cnt > 0){
+            if(q.front().at(0) == '('){
+              cnt++;
+            }
+            else if(q.front().at(q.front().size()-1) == ')'){
+              cnt--;
+            }
+            if(cnt != 0){
+              q.pop();
+            }
+          } 
+          q.front().erase(0,q.front().size());
+          q.front().append("false");
+        }
+        else{
+          while(!q.empty() && !isConnector(q.front())){
+            q.pop();
+          }
         }
       }
       else{
         q.pop(); //pops connector
       }
-    }
+  }
     //Every other case
     else{
       ret = execute(cmd, args) + 1;
