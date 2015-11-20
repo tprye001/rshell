@@ -51,8 +51,14 @@ void help(queue<string>& q){
       }
       else if(counter != 0){
         counter--;
-        q.front().erase(q.front().size()-1, 1);
-        new_q.push(q.front());
+        if ( q.front().size() > 1 && q.front().at(q.front().size()-2) == ')') {
+          q.front().erase(q.front().size()-1, 1);
+          new_q.push(q.front());
+        }
+        else {
+          new_q.push(q.front());
+          q.pop();
+        }
       }  
     }
 
