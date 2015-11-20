@@ -30,27 +30,33 @@ void help(queue<string>& q){
         int x = executeAll(new_q);
 
         if(x == 0){
-          q.front().erase(0, q.front().size());
+          if(!q.front().empty()){
+            q.front().erase(0, q.front().size());
+          }
           q.front().append("exit");
         }
         else if(x == 2){
-          q.front().erase(0,q.front().size());
+          if(!q.front().empty()){
+            q.front().erase(0,q.front().size());
+          }
           q.front().append("true");
         }
         else if(x == 1){
-          q.front().erase(0,q.front().size());
+          if(!q.front().empty()){
+            q.front().erase(0,q.front().size());
+          }
           q.front().append("false");
         }
         return;
       }
       else if(counter != 0){
         counter--;
-        //q.front().erase(q.front().size()-1, 1);
+        q.front().erase(q.front().size()-1, 1);
         new_q.push(q.front());
       }  
     }
 
-    else if(q.front().at(0) == '('){
+    else if(!q.front().empty() && q.front().at(0) == '('){
       new_q.push(q.front());
       q.pop();
       counter++;
