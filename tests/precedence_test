@@ -1,0 +1,35 @@
+Script started on Fri 20 Nov 2015 12:47:12 AM PST
+[tprye001@hammer tests]$ cd ..
+[tprye001@hammer rshell]$ ./bin/rshell
+$ (echo A && echo B) || (echo C && echo D)
+A
+B
+$ ((echo A && echo B)||| (echo C && echo D))
+A
+B
+$ (echo A && (echo B || ls))
+A
+B
+$ (echo A && (ls || echo B)) && echo C
+A
+bin  LICENSE  Makefile	README.md  src	tests
+C
+$ ((echo A && echo B) && ls)
+A
+B
+bin  LICENSE  Makefile	README.md  src	tests
+$ (((echo A && echo B) || (echo C && echo D)) || ls))&& ls
+A
+B
+bin  LICENSE  Makefile	README.md  src	tests
+$ ( [ -f src ] || echo A) && echo B
+A
+B
+$ (test src && ( [ -f src ] || (echo Aa&&&(echo B || echo C))))
+A
+B
+$ exit
+[tprye001@hammer rshell]$ exit
+exit
+
+Script done on Fri 20 Nov 2015 12:51:16 AM PST
