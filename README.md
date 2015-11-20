@@ -1,7 +1,7 @@
 Jonathan Alcaraz
 
 Tricia Pryer
-# CS100 Assignment 1 | rshell
+# CS100 Assignment 2 | rshell
 
 People much smarter than us have made shells much better than ours, but this is ours and we love it.
 
@@ -16,8 +16,8 @@ Rshell currently supports the following commands:
 | `ls [FLAGS]` | Prints everything in working directory. |
 | `echo [ARGS]` | Prints `[ARGS]` to standard out. |
 | `mkdir [DIR]` | Creates a directory `[DIR]` in working directory. |
+| `test [FLAG] [PATH]` | Tests whether `[PATH]` exists (`-e`), is a regular file (`-f`), or is a directory (`-d`) based on given flag (no flag defaults to `-e`). |
 
-(these should all work with any flags in bash)
 
 Rshell currently supports the following connectors:
 
@@ -32,6 +32,24 @@ commands which may include arguments and flags)
 
 Rshell also supports an `exit` command and commenting with `#`
 (everything after `#` is ignored).
+
+Rshell supports precedence using `( )`, including nesting. For example:
+
+```
+$ (echo A && echo B) || (echo C && echo D)
+A
+B
+$ ((echo A && echo B) || echo C) && echo D
+A
+B
+D
+```
+
+### Design
+
+Rshell is designed, admittedly, poorly. It uses mostly branching and little encapsulation of any kind.
+
+Given the opportunity to redesign rshell, we would implement a composite pattern. We would have connectors and commands inheritting from a common abstract base class. Using this common interface, we would set up the commands as a binary tree and recurse down the tree with `execute()`. Come to think of it, that would have actually been pretty cool. Damn.
 
 ### Extensibility
 
