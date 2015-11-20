@@ -1,0 +1,46 @@
+Script started on Fri 20 Nov 2015 12:43:54 AM PST
+[jalca011@hammer tests]$ cd ..
+[jalca011@hammer rshell]$ ./bin/rshell
+$ ls
+bin  LICENSE  Makefile	README.md  src	tests
+$ [ -e src ]
+$ [ -e butts ]
+$ [ -f src ] || echo no
+no
+$ [ -d src ] || echo no
+$ [ -f README.md ] || echo no
+$ [ -d README.md ] || echo no
+no
+$ [ -e src ] && echo yes
+yes
+$ [ src ] && echo yes
+yes
+$ test -e src && echo yess
+yes
+$ test src && echo yes
+yes
+$ [ -e src ] || echo yes
+$ [ssrc ] || echo yes
+$ test -e src || echo yes
+$ test src || echo yes
+$ [ -e butts ] && echo no
+$ [ butts ] && echo no
+$ test -e butts && echo no
+$ test butts && echo no
+$ [ -e butts ] || echo no
+no
+$ [ butts ] || echo no
+no
+$ test -e butts || echo no
+no
+$ test butts || echo no
+no
+$ [ -d butts ] || echo no
+no
+$ [ -f butts ] || echo no
+no
+$ exit
+[jalca011@hammer rshell]$ exit
+exit
+
+Script done on Fri 20 Nov 2015 12:52:50 AM PST
