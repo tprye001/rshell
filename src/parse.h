@@ -16,6 +16,11 @@ std::queue<std::string> parse (std::string line) {
       line.erase(c, line.size() - 1);
     }
   }
+  
+  for (unsigned c = 0; c < line.size(); c++) {
+    if ( line.at(c) == '(' || line.at(c) == ')') 
+      line.insert(c + 1, " ");
+  }
 
   char * linePointer = new char[line.size() + 1];
   std::copy(line.begin(), line.end(), linePointer);
